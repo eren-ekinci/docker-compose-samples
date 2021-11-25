@@ -42,7 +42,7 @@ services:
     image: phpmyadmin/phpmyadmin
     depends_on:
       - mysqldb
-    always: restart
+    restart: always
     ports:
       - "7080:80"
     environment:
