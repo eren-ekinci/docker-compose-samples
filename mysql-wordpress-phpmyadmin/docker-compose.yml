@@ -14,10 +14,10 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: sa
-      MYSQL_PASSWORD: birikiuc123!
-      MYSQL_ROOT_PASSWORD: birikiuc123!
+      MYSQL_DATABASE: 'wordpress'
+      MYSQL_USER: 'sa'
+      MYSQL_PASSWORD: 'birikiuc123!'
+      MYSQL_ROOT_PASSWORD: 'birikiuc123!'
     networks:
       - sample_network
     restart: always
@@ -31,9 +31,9 @@ services:
     ports:
       - '1010:80'
     environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_MYSQL_USER: sa
-      WORDPRESS_MYSQL_PASSWORD: birikiuc123!
+      WORDPRESS_DB_HOST: 'mysqldb:3306'
+      WORDPRESS_DB_USER: 'sa'
+      WORDPRESS_DB_PASSWORD: 'birikiuc123!'
     networks:
       - sample_network
     restart: always
@@ -46,7 +46,7 @@ services:
     ports:
       - '7080:80'
     environment:
-      PMA_HOST: mysqldb:3306
-      MYSQL_ROOT_PASSWORD: birikiuc123!
+      PMA_HOST: 'mysqldb:3306'
+      MYSQL_ROOT_PASSWORD: 'birikiuc123!'
     networks:
       - sample_network
