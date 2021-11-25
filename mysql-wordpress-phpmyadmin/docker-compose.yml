@@ -51,3 +51,24 @@ services:
       MYSQL_ROOT_PASSWORD: birikiuc123!
     networks:
       - sample_network
+  
+  drupal:
+    image: drupal
+    depends_on:
+      - mysqldb
+    ports:
+      - "9080:80"
+    volumes:
+      - /var/www/html/sites
+      - /var/www/html/profiles
+      - /var/www/html/themes
+      - /var/www/html/modules
+      - /var/www/html/private
+
+    environment:
+      MYSQL_DATABASE: DRUPAL
+      MYSQL_USER: sa
+      MYSQL_PASSWORD: birikiuc123!
+    networks:
+      - sample_network
+    restart: always
