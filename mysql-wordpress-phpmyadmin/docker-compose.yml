@@ -57,7 +57,7 @@ services:
     depends_on:
       - mysqldb
     ports:
-      - "9080:80"
+      - "2020:80"
     volumes:
       - /var/www/html/sites
       - /var/www/html/profiles
