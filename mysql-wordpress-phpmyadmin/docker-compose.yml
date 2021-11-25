@@ -63,7 +63,7 @@ services:
       - /var/www/html/profiles
       - /var/www/html/themes
       - /var/www/html/modules
-      - /var/www/html/private
+      - /var/www/private
 
     environment:
       MYSQL_DATABASE: DRUPAL
