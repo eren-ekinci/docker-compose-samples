@@ -1,0 +1,52 @@
+version: '3'
+
+volumes: #volume tanımı yapıldı
+  db_data:
+
+networks: #network tanımı yapıldı
+  sample_network:
+    driver: bridge
+
+services:
+
+  mysqldb: # mysql servis tanımları
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE: ERENDB
+      - MYSQL_USER: sa
+      - MYSQL_PASSWORD: birikiuc123!
+      - MYSQL_ROOT_PASSWORD: birikiuc123!
+    networks:
+      - sample_network
+    restart: always
+  
+  wordpress: #wordpress servis tanımları
+    image: wordpress:latest
+    depends_on: # bağımlılık belirtiyoruz. mysqldb servisi ayağa kalkmadan bu servisi çalıştırma
+      - mysqldb  
+    volumes:
+      - ./wordpress_data:/var/www/html
+    ports:
+      - "1010:80"
+    environment:
+      - WORDPRESS_DB_HOST: .
+      - WORDPRESS_MYSQL_USER: sa
+      - WORDPRESS_MYSQL_PASSWORD: birikiuc123!
+    networks:
+      - sample_network
+    restart: always
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysqldb
+    always: restart
+    ports:
+      - "7080:80"
+    environment:
+      - PMA_HOST: EREN
+      - MYSQL_ROOT_PASSWORD: birikiuc123!  
+    networks:
+      - sample_network
