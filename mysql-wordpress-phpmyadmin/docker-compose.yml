@@ -31,7 +31,7 @@ services:
     ports:
       - '1010:80'
     environment:
-      WORDPRESS_DB_HOST: 'mysqldb:3306'
+      WORDPRESS_DB_HOST: mysqldb:3306
       WORDPRESS_DB_USER: 'sa'
       WORDPRESS_DB_PASSWORD: 'birikiuc123!'
     networks:
@@ -46,7 +46,7 @@ services:
     ports:
       - '7080:80'
     environment:
-      PMA_HOST: 'mysqldb:3306'
+      PMA_HOST: mysqldb:3306
       MYSQL_ROOT_PASSWORD: 'birikiuc123!'
     networks:
       - sample_network
