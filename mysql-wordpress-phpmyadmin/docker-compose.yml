@@ -53,7 +53,7 @@ services:
       - sample_network
   
   drupal:
-    image: drupal
+    image: drupal:8-apache
     depends_on:
       - mysqldb
     ports:
